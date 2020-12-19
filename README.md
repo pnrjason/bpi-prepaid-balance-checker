@@ -1,3 +1,2 @@
 # bpi-prepaid-balance-checker
-you will need an api key from anti-captcha
-tnx
+do not forgoet to include the anti-captcha sdk files, also you will need an api key
