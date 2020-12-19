@@ -38,7 +38,7 @@ $api = new NoCaptchaProxyless();
 $api->setVerboseMode(true);
         
 //your anti-captcha.com account key
-$api->setKey("f41d17eab0d6a3269cb4f9576b80d0c4");
+$api->setKey("PUT YOUR ANTI-CAPTCHA API KEY HERE");
 
 //target website address
 $api->setWebsiteURL("https://online.bpi.com.ph/portalserver/onlinebanking/prepaid-card-inquiry");
