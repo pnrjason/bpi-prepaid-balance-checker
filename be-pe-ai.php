@@ -4,30 +4,13 @@
 	include("anticaptcha.php");
 	include("nocaptchaproxyless.php");
 
-	if($_SERVER['REQUEST_METHOD'] == 'POST'){ 
-	    extract($_POST); 
-	} 
-	else { 
-	   extract($_GET); 
-	} 
-
 	function GetStr($string, $start, $end){ 
 	    $str = explode($start, $string); 
 	    $str = explode($end, $str[1]); 
 	    return $str[0]; 
-	} 
-
-	function RandomString($length = 5)
-	{
-	    $characters       = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
-	    $charactersLength = strlen($characters);
-	    $randomString     = '';
-	    for ($i = 0; $i < $length; $i++) {
-		$randomString .= $characters[rand(0, $charactersLength - 1)];
-	    }
-	    return $randomString;
 	}
 
+	extract($_GET);
 	$separator = explode("|", $lista);  
 	$cc = $separator[0]; 
 	$mm = $separator[1]; 
