@@ -23,10 +23,9 @@
 	//your anti-captcha.com account key
 	$api->setKey("PUT YOUR ANTI-CAPTCHA API KEY HERE");
 
-	//target website address
 	$api->setWebsiteURL("https://online.bpi.com.ph/portalserver/onlinebanking/prepaid-card-inquiry");
 
-	//recaptcha key from target website
+	//recaptcha key
 	$api->setWebsiteKey("6Leq1MQUAAAAACKtC3mnuHNupBZZAAuf6PobxhEU");
 
 	//create task in API
@@ -63,21 +62,13 @@
 	curl_close($ch); 
 
 	$errorMsg = GetStr($rez, '"errorMessage":"', '"');
-	$balance = GetStr($rez, '"availableBalance":"', '"');
+	$bal = GetStr($rez, '"availableBalance":"', '"');
 
-	if($balance > 1000){ 
-
-	    echo '<tr><td><span class="badge badge-outline-success badge-pill">LIVE</span></td> <td>'.$lista.'</td> <td><span class="badge badge-outline-success badge-pill">Balance: '.$balance.'</span></td></tr><br>'; 
-
-	}
-	elseif(strpos($rez, 'errorCode')){ 
-
-	    echo '<tr><td><span class="badge badge-outline-danger badge-pill">DEAD</span></td> <td>'.$lista.'</td> <td><span class="badge badge-outline-danger badge-pill">Msg: Please enter a valid Prepaid card number.</span></td></tr><br>'; 
-
-	}
-	else { 
-
-		echo '<tr><td><span class="badge badge-outline-danger badge-pill">DEAD</span></td> <td>'.$lista.'</td> <td><span class="badge badge-outline-danger badge-pill">Balance: '.$balance.'</span></td></tr><br>'; 
-
+	if($bal > 1000) { 
+		echo '<tr><td><span class="badge badge-outline-success badge-pill">LIVE</span></td> <td>'.$lista.'</td> <td><span class="badge badge-outline-success badge-pill">Bal: '.$bal.'</span></td></tr><br>'; 
+	} elseif(strpos($rez, 'errorCode')) { 
+		echo '<tr><td><span class="badge badge-outline-danger badge-pill">DEAD</span></td> <td>'.$lista.'</td> <td><span class="badge badge-outline-danger badge-pill">Msg: Please enter a valid number.</span></td></tr><br>'; 
+	} else { 
+		echo '<tr><td><span class="badge badge-outline-danger badge-pill">DEAD</span></td> <td>'.$lista.'</td> <td><span class="badge badge-outline-danger badge-pill">Bal: '.$bal.'</span></td></tr><br>';
 	}
 ?>
